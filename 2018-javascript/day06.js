@@ -16,6 +16,7 @@ for (let c of coords) {
 
 let maxX = -Infinity, maxY = -Infinity
 let minX = Infinity, minY = Infinity
+
 for (let c of coords) {
   let [x, y] = c
   maxX = Math.max(x, maxX)
