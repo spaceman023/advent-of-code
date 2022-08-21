@@ -7,7 +7,8 @@ for (let s of str) {
     stack.push(s)
     continue
   }
-  if (stack.at(-1) !== s && (stack.at(-1).toLowerCase() === s || stack.at(-1) === s.toLowerCase())) {
+  if (stack.at(-1) !== s &&
+    (stack.at(-1).toLowerCase() === s || stack.at(-1) === s.toLowerCase())) {
     stack.pop()
   } else {
     stack.push(s)
@@ -24,7 +25,8 @@ for (let a of alphabet) {
       stack.push(s)
       continue
     }
-    if (stack.at(-1) !== s && (stack.at(-1).toLowerCase() === s || stack.at(-1) === s.toLowerCase())) {
+    if (stack.at(-1) !== s &&
+      (stack.at(-1).toLowerCase() === s || stack.at(-1) === s.toLowerCase())) {
       stack.pop()
     } else {
       stack.push(s)

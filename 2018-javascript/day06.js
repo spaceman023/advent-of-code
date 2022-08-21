@@ -1,10 +1,15 @@
 const fs = require("fs");
-const input = fs.readFileSync("day06-input.txt")
+const input = fs.readFileSync("./inputs/day06-input.txt")
 const lines = input.toString().split("\n")
+
+function getmd(c1, c2) {
+  return Math.abs(c1[0] - c2[0]) + Math.abs(c1[1] - c2[1])
+}
+
 let alphabet = "abcdefghijklmnopqrstuvwxyz".split("")
 alphabet = alphabet.concat(alphabet.map(i => i.toUpperCase()))
 lines.pop()
-const coords = lines.map(i => i.split(",").map(y => Number(y)))
+const coords = [].concat(lines.map(i => i.split(",").map(y => Number(y))))
 for (let c of coords) {
   c.reverse()
 }
@@ -17,8 +22,8 @@ for (let c of coords) {
   minX = Math.min(x, minX)
   minY = Math.min(y, minY)
 }
-let rows = maxX + 100
-let cols = maxY + 100
+const rows = maxX + 100
+const cols = maxY + 100
 let grid = new Array(rows + 1).fill(new Array(cols + 1).fill(0))
 let fgrid = [];
 let map = {}
@@ -35,11 +40,7 @@ for (let row = 0; row <= rows; row++) {
     let closest = ""
     if (ranges[0][0] == ranges[1][0]) {
       closest = "."
-    } else if (ranges[0][0] === 0) {
-      closest = ranges[0][1]
-      //grid[row][col] = ranges[0][1].toUpperCase()
-    }
-    else closest = ranges[0][1]
+    } else closest = ranges[0][1]
     grid[row][col] = closest
     map[closest] = map[closest] + 1 || 1
     if (row == 0 || col == 0 || row == rows || col == cols) {
@@ -48,16 +49,12 @@ for (let row = 0; row <= rows; row++) {
   }
   fgrid.push([...grid[row]])
 }
-console.log(infinites)
 let maxArea = 0
 for (let [k, v] of Object.entries(map)) {
   if (!infinites.has(k)) {
     maxArea = Math.max(v, maxArea)
-    console.log(k, v)
   }
 }
+
 console.log(maxArea)
 console.log(near.size)
-function getmd(c1, c2) {
-  return Math.abs(c1[0] - c2[0]) + Math.abs(c1[1] - c2[1])
-}
