@@ -41,8 +41,7 @@ while (q.length > 0) {
     q = [...q, ...dic[next][0]]
   }
 }
-let work = final.split("")
-work = work.map(i => [i, i.charCodeAt(0) - 4])
+let work = final.split("").map(i => [i, i.charCodeAt(0) - 4])
 let workers = 5
 let working = []
 let finished = []
@@ -61,8 +60,7 @@ while (work.length > 0 || working.length > 0) {
   let worktest = working.map(j => j[0])
   work = work.filter(i => !worktest.includes(i[0]))
   working.forEach(i => i[1]--)
-  let done = working.filter(i => i[1] < 1)
-  finished = finished.concat(done);
+  finished = finished.concat(working.filter(i => i[1] < 1));
   working = working.filter(i => i[1] > 0)
 }
 console.log(seconds)
