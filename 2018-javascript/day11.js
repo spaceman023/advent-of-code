@@ -1,6 +1,5 @@
 let serialNumber = 6042
 let powergrid = [...new Array(300)].map(() => new Array(300).fill(""))
-
 class Cell {
   constructor(powerlevel, x, y) {
     this.powerlevel = powerlevel;
