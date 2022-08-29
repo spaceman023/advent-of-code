@@ -19,7 +19,6 @@ class Cell {
       grid[x][y - 1],
       grid[x + 1][y - 1]].map(i => i.powerlevel).reduce((a, b) => a + b)
   }
-
   getSquarePower2(grid) {
 
   }
