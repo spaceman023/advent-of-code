@@ -7,8 +7,7 @@ class Node {
     this.parent = parent || this;
     this.next = next;
   }
-
-};
+}
 class List {
   constructor(head) {
     this.head = head;
@@ -17,59 +16,59 @@ class List {
     this.current = head;
   }
   print() {
-    let node = this.current
-    let arr = []
+    let node = this.current;
+    let arr = [];
     for (let i = 0; i < this.length; i++) {
-      arr.push(node.value)
+      arr.push(node.value);
       node = node.next;
     }
-    console.log(arr)
   }
   addMarble(value) {
     let temp = this.current.next.next;
     this.current.next.next = new Node(value, this.current.next, temp);
     this.current = this.current.next.next;
-    this.current.next.parent = this.current
-    this.length++
+    this.current.next.parent = this.current;
+    this.length++;
   }
   handle23() {
-    this.current = this.current.parent.parent.parent.parent.parent.parent.parent.parent
+    this.current =
+      this.current.parent.parent.parent.parent.parent.parent.parent.parent;
     let score = this.current.next.value;
     let temp = this.current.next.next;
     this.current.next = temp;
     this.current.next.parent = this.current;
-    this.current = this.current.next
-    this.length--
-    return score
+    this.current = this.current.next;
+    this.length--;
+    return score;
   }
-};
-let i = new Node(0, null, null)
-i.next = new Node(1, i, i)
-let l = new List(i)
-l.length++
-l.current = i.next
+}
+let i = new Node(0, null, null);
+i.next = new Node(1, i, i);
+let l = new List(i);
+l.length++;
+l.current = i.next;
 let scores = {};
-let currPlayer = 1
+let currPlayer = 1;
 for (let i = 2; i <= lastMarbleScore; i++) {
   if (!scores[currPlayer]) {
-    scores[currPlayer] = 0
+    scores[currPlayer] = 0;
   }
   if (i % 23 === 0) {
-    let score = l.handle23()
-    let take = i
-    scores[currPlayer] += (take + score);
+    let score = l.handle23();
+    let take = i;
+    scores[currPlayer] += take + score;
   } else {
-    l.addMarble(i)
+    l.addMarble(i);
   }
   if (currPlayer === players) {
-    currPlayer = 0
+    currPlayer = 0;
   }
-  currPlayer++
+  currPlayer++;
 }
-let max = 0
+let max = 0;
 for (let [, v] of Object.entries(scores)) {
   if (v > max) {
-    max = v
+    max = v;
   }
 }
-console.log(max)
+console.log(max);
