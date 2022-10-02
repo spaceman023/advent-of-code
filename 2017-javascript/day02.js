@@ -1,7 +1,7 @@
 import { importInput } from "./helpers.js";
-const input = importInput("./inputs/day02-input.txt")
+const input = importInput("./inputs/2")
   .split("\n")
-  .map((line) => line.split(/\s+/));
+  .map(line => line.split(/\s+/));
 input.pop();
 
 // Part 1

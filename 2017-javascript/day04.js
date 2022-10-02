@@ -30,7 +30,7 @@ class checkPassphrases {
   }
 }
 
-let input = importInput("./inputs/day04-input.txt");
+let input = importInput("./inputs/4");
 let check = new checkPassphrases(input);
 
 check.checkAll();

@@ -1,5 +1,5 @@
 import { importInput } from "./helpers.js";
-let input = importInput("./inputs/day05-input.txt")
+let input = importInput("./inputs/5")
   .split("\n")
   .map(x => +x);
 input.pop();
