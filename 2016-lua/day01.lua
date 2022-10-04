@@ -1,4 +1,4 @@
-f = io.open("./inputs/day01-input.txt"):read("*all")
+local f = io.open("./inputs/day01-input.txt"):read("*all")
 local currDirection = "North"
 Directions = {}
 local point = { x = 0, y = 0 }

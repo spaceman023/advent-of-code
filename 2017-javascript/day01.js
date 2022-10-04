@@ -31,4 +31,6 @@ function findOffsetDuplicates(str = "") {
 
 let partOne = findDuplicates(input);
 let partTwo = findOffsetDuplicates(input);
-console.log(partOne, partTwo);
+console.log("===== Day 1 =====");
+console.log("Part One: ", partOne);
+console.log("Part Two: ", partTwo);

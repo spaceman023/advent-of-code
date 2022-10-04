@@ -30,4 +30,7 @@ class Maze {
 }
 const partOne = new Maze(input).run();
 const partTwo = new Maze(input).run2();
-console.log(partOne, partTwo);
+
+console.log("===== Day 5 =====");
+console.log("Part One: ", partOne);
+console.log("Part Two: ", partTwo);

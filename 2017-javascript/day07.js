@@ -38,20 +38,31 @@ class Tower {
     }
     return weight;
   }
-  calculateBalance(disc) {
-    let weights = [];
-    for (const child of disc.children) {
-      weights.push(this.getWeight(this.getDisc(child)));
+  findUnbalancedDisc(disc = this.getRoot()) {
+    const children = disc.children.map(child => this.getDisc(child));
+    const weights = children.map(child => this.getWeight(child));
+    const weightSet = new Set(weights);
+    if (weightSet.size === 1) {
+      return disc;
     }
-    const uniqueWeights = [...new Set(weights)];
-    if (uniqueWeights.length === 1) {
-      return disc.weight;
-    }
-    const wrongWeight = uniqueWeights.find(
+    const unbalancedWeight = [...weightSet].find(
       weight => weights.filter(w => w === weight).length === 1,
     );
-    const wrongDisc = this.getDisc(disc.children[weights.indexOf(wrongWeight)]);
-    return this.calculateBalance(wrongDisc);
+    const unbalancedDisc = children.find(child => this.getWeight(child) === unbalancedWeight);
+    return this.findUnbalancedDisc(unbalancedDisc);
+  }
+  balance() {
+    const disc = this.findUnbalancedDisc();
+    return (
+      disc.weight -
+      Math.abs(
+        this.getWeight(
+          disc.parent.children
+            .map(child => this.getDisc(child))
+            .find(child => child.name !== disc.name),
+        ) - this.getWeight(disc),
+      )
+    );
   }
   init(discs) {
     for (const disc of discs) {
@@ -69,4 +80,4 @@ class Tower {
 const tower = new Tower(input);
 const root = tower.getRoot();
 console.log("Part 1:", root.name);
-console.log("Part 2:", tower.calculateBalance(root));
+console.log("Part 2:", tower.balance(tower.findUnbalancedDisc(root)));

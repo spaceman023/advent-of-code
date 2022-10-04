@@ -25,8 +25,9 @@ class checkPassphrases {
     }
   }
   printValid() {
-    console.log(this.validPassphrasesv1);
-    console.log(this.validPassphrasesv2);
+    console.log("===== Day 4 =====");
+    console.log("Part One: ", this.validPassphrasesv1);
+    console.log("Part Two: ", this.validPassphrasesv2);
   }
 }
 
