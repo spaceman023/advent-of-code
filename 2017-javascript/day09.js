@@ -59,5 +59,5 @@ class Tree {
 }
 let tree = new Tree(input);
 console.log("===== Day 9 =====");
-console.log("Part 1:", tree.getScore());
-console.log("Part 2:", tree.getGarbageCount());
+console.log("Part One:", tree.getScore());
+console.log("Part Two:", tree.getGarbageCount());
