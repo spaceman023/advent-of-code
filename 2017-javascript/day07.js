@@ -79,5 +79,6 @@ class Tower {
 }
 const tower = new Tower(input);
 const root = tower.getRoot();
-console.log("Part 1:", root.name);
-console.log("Part 2:", tower.balance(tower.findUnbalancedDisc(root)));
+console.log("===== Day 7 =====");
+console.log("Part One:", root.name);
+console.log("Part Two:", tower.balance(tower.findUnbalancedDisc(root)));

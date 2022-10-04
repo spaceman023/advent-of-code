@@ -73,5 +73,6 @@ class Banks {
 const banks = new Banks(input);
 const partOne = banks.run();
 const partTwo = partOne - banks.history.indexOf(banks.getHash());
+console.log("===== Day 6 =====");
 console.log("Part One:", partOne);
 console.log("Part Two:", partTwo);

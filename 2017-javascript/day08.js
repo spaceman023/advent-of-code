@@ -46,5 +46,6 @@ input.forEach(instruction => {
     highestValue = value;
   }
 });
+console.log("===== Day 8 =====");
 console.log("Part One", register.getHighestValue());
 console.log("Part Two", highestValue);

@@ -1,9 +1,8 @@
-node day01.js;
-node day02.js;
-node day04.js;
-node day05.js;
-node day06.js;
-node day07.js;
-node day08.js;
+for i in {0..9}; do
+  if [ $i -gt 9 ]; then
+  node "day${i}.js"
+  else
+  node "day0${i}.js"
+  fi
 
-
+done
