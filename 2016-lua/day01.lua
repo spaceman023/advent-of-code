@@ -10,7 +10,7 @@ for w in f:gmatch("([^,]+),?") do
   index = index + 1
 end
 
-for key, val in pairs(Directions) do
+for _, val in pairs(Directions) do
   local direction = string.sub(val, 1, 1)
   local steps = tonumber(string.sub(val, 2, string.len(val)))
 
