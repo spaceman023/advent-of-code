@@ -9,6 +9,7 @@ for i in range(len(input)):
 # part two
 # optimal 3-sum
 input = sorted(list(map(lambda x: int(x), input)))
+
 for i in range(len(input)-2):
     if i > 0 and input[i] == input[i-1]:
         continue
@@ -22,3 +23,4 @@ for i in range(len(input)-2):
             l += 1
         else:
             r -= 1
+
