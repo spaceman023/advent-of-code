@@ -1,9 +1,9 @@
-import { importInput } from "./helpers.js";
-let input = importInput("./inputs/9");
+import { importInput } from './helpers.js';
+let input = importInput('./inputs/9');
 class TreeNode {
   constructor(parent) {
     this.children = [];
-    this.garbage = "";
+    this.garbage = '';
     this.parent = parent || null;
   }
 }
@@ -17,19 +17,19 @@ class Tree {
     let i = 0;
     while (i < input.length) {
       switch (input[i]) {
-        case "{":
+        case '{':
           let newNode = new TreeNode(this.currentNode);
           this.currentNode.children.push(newNode);
           this.currentNode = newNode;
           break;
-        case "}":
+        case '}':
           this.currentNode = this.currentNode.parent;
           break;
-        case "<":
-          let garbage = "";
+        case '<':
+          let garbage = '';
           i++;
-          while (input[i] !== ">") {
-            if (input[i] === "!") {
+          while (input[i] !== '>') {
+            if (input[i] === '!') {
               i += 2;
             } else {
               garbage += input[i];
@@ -58,6 +58,6 @@ class Tree {
   }
 }
 let tree = new Tree(input);
-console.log("===== Day 9 =====");
-console.log("Part One:", tree.getScore());
-console.log("Part Two:", tree.getGarbageCount());
+console.log('===== Day 9 =====');
+console.log('Part One:', tree.getScore());
+console.log('Part Two:', tree.getGarbageCount());
