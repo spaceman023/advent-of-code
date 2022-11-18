@@ -1,25 +1,64 @@
+import math
 input = open("./inputs/16", "r").read().split("\n\n")
-ranges = input[0].split("\n")
-ticket = input[1]
-nnearby = input[2].replace("nearby tickets:\n", "")
 
 
-idx = {}
-for r in ranges:
-    kind, nums = r.split(": ")
-    nums = nums.split(" or ")
-    for k in nums:
-        start, end = k.split("-")
-        for n in range(int(start), int(end)+1):
-            idx[n] = kind
+class Field:
+    def __init__(self, line):
+        name, ranges = line.split(": ")
+        ranges = [tuple(map(int, x.split("-"))) for x in ranges.split(" or ")]
+        self.name = name
+        self.ranges = ranges
 
-error_rate = 0
+    def __contains__(self, x):
+        return any(a <= x <= b for a, b in self.ranges)
 
-bad = {}
-nnearby = [int(x) for x in nnearby.replace("\n", ",")[:-1].split(",")]
-for n in nnearby:
-    if n not in idx:
-        bad[n] = True
-        error_rate += n
+    def __repr__(self):
+        return self.name
 
-print(error_rate)
+
+class Ticket:
+    def __init__(self, line):
+        self.values = [int(x) for x in line.split(",")]
+
+    def __iter__(self):
+        return iter(self.values)
+
+    def __len__(self):
+        return len(self.values)
+
+    def __repr__(self) -> str:
+        return str(self.values)
+
+    def is_valid(self, fields):
+        return all(any(x in f for f in fields) for x in self.values)
+
+
+def parse_input(input):
+    fields = [Field(line) for line in input[0].split("\n")]
+    my_ticket = Ticket(input[1].split("\n")[1])
+    nearby_tickets = [Ticket(line) for line in input[2].split("\n")[1:-1]]
+    return fields, my_ticket, nearby_tickets
+
+
+def part1(input):
+    fields, _, nearby_tickets = parse_input(input)
+    return sum(x for t in nearby_tickets for x in t if not any(x in f for f in fields))
+
+
+def part2(input):
+    fields, my_ticket, nearby_tickets = parse_input(input)
+    valid_tickets = [t for t in nearby_tickets if t.is_valid(fields)]
+    field_order = {}
+    while len(field_order) < len(fields):
+        for i in range(len(fields)):
+            if i in field_order:
+                continue
+            possible_fields = [f for f in fields if all(
+                t.values[i] in f for t in valid_tickets) and f not in field_order.values()]
+            if len(possible_fields) == 1:
+                field_order[i] = possible_fields[0]
+    return math.prod(t for i, t in enumerate(my_ticket) if field_order[i].name.startswith("departure"))
+
+
+print(part1(input))
+print(part2(input))
