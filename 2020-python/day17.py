@@ -9,7 +9,7 @@ class Dimension:
             for x, state in enumerate(line):
                 self.cubes[(x, y, 0, 0)] = state
 
-    def get_neighbors(self, cube: tuple[int, int, int]) -> list[str]:
+    def get_neighbors(self, cube: tuple[int, int, int, int]) -> list[str]:
         neighbors = []
         for x in range(cube[0] - 1, cube[0] + 2):
             for y in range(cube[1] - 1, cube[1] + 2):
@@ -19,7 +19,7 @@ class Dimension:
                             neighbors.append(self.cubes[(x, y, z, w)])
         return neighbors
 
-    def create_new_cubes(self) -> list[tuple[int, int, int]]:
+    def create_new_cubes(self) -> list[tuple[int, int, int, int]]:
         to_add = []
         for cube in self.cubes:
             for x in range(cube[0] - 1, cube[0] + 2):
