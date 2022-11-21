@@ -21,7 +21,7 @@ class Dimension:
 
     def create_new_cubes(self) -> list[tuple[int, int, int]]:
         to_add = []
-        for cube in self.cubes.keys():
+        for cube in self.cubes:
             for x in range(cube[0] - 1, cube[0] + 2):
                 for y in range(cube[1] - 1, cube[1] + 2):
                     for z in range(cube[2] - 1, cube[2] + 2):
