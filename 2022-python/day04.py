@@ -19,7 +19,6 @@ def compute(s: str) -> int:
         r1 = [int(x) for x in r1.split("-")]
         r2 = [int(x) for x in r2.split("-")]
         sortedrs = sorted([r1, r2], key=lambda x: x[0])
-        # check if lists in sortedrs overlap
         if sortedrs[0][1] >= sortedrs[1][0]:
             m += 1
 
