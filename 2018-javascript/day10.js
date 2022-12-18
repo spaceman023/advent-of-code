@@ -2,7 +2,6 @@ const fs = require("fs");
 const input = fs.readFileSync("./inputs/day10-input.txt");
 const lines = input.toString().split("\n");
 lines.pop();
-
 class Star {
   constructor(pos, vel) {
     this.pos = pos;
