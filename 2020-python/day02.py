@@ -3,10 +3,10 @@ input.pop()
 
 
 class Password:
-    def __init__(self, inputString: str):
-        inputString = inputString.split(': ')
+    def __init__(self, input: str):
+        inputString = input.split(': ')
         self.password: str = inputString[1]
-        self.policy: str = inputString[0].split(' ')
+        self.policy: list[str] = inputString[0].split(' ')
         self.letter: str = self.policy[1]
         self.min: int = int(self.policy[0].split('-')[0])
         self.max: int = int(self.policy[0].split('-')[1])
@@ -21,14 +21,15 @@ class Password:
 # part one
 count1 = 0
 for i in range(len(input)):
-    input[i] = Password(input[i])
-    if input[i].isValid():
+    pw: Password = Password(input[i])
+    if pw.isValid():
         count1 += 1
 print(count1)
 
 # part two
 count2 = 0
 for i in range(len(input)):
-    if input[i].isValid2():
+    pw: Password = Password(input[i])
+    if pw.isValid2():
         count2 += 1
 print(count2)

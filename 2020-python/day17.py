@@ -30,13 +30,13 @@ class Dimension:
                                 to_add.append((x, y, z, w))
         return to_add
 
-    def get_active_neighbors(self, cube):
+    def get_active_neighbors(self, cube) -> int:
         return self.get_neighbors(cube).count("#")
 
-    def get_active_cubes(self):
+    def get_active_cubes(self) -> int:
         return list(self.cubes.values()).count("#")
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return str(self.cubes)
 
     def cycle(self):

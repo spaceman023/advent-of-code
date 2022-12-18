@@ -21,7 +21,7 @@ for (let l of lines) {
   }
 }
 let count = 0;
-for (let [k, v] of fabric) {
+for (let [_, v] of fabric) {
   if (v > 1) {
     count++
   }
