@@ -17,7 +17,7 @@ function parseLine(line) {
     map.set(l, map.get(l) + 1);
   }
   let ret = [0, 0]
-  for (let [k, v] of map) {
+  for (let [_, v] of map) {
     if (v == 2) {
       ret[0]++
     }
