@@ -34,10 +34,8 @@ class Directory {
     });
     return sum;
   }
-  //write a function that prints an indented tree of the directory
   printTree(indent = 0) {
     console.log(`${'_'.repeat(indent)}${this.name} ${this.size()}`);
-    //print files
     this.files.forEach((file) => {
       console.log(`${'_'.repeat(indent + 2)}${file.name}.${file.extension} ${file.size}`);
     });
@@ -107,7 +105,7 @@ class Parser {
   }
   sizeUnder(size) {
     let sum = 0;
-    for (let [key, value] of this.directories) {
+    for (let [_, value] of this.directories) {
       if (value.size() <= size) {
         sum += value.size();
       }
@@ -124,7 +122,7 @@ class Parser {
     let freeSpace = this.freeSpace();
     let needed = 30000000 - freeSpace;
     let optimal;
-    for (let [key, value] of this.directories) {
+    for (let [_, value] of this.directories) {
       let diff = value.size() - needed;
       if (diff < min && diff > 0) {
         min = diff;
